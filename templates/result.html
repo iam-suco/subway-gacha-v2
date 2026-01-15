@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サブウェイカスタムガチャ - 結果</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f9f9f9; text-align: center; color: #333; margin: 0; padding: 20px; } 
+    .container { background: white; max-width: 500px; margin: 0 auto; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; border-top: 8px solid #00923f; } 
+    .header { background-color: #00923f; color: #ffc20e; padding: 15px; font-size: 1.5em; font-weight: bold; } 
+    .result-image { width: 85%; max-width: 400px; height: auto; aspect-ratio: 4 / 3; object-fit: contain; margin: 10px auto; display: block; background-color: #fff; } 
+    .content { padding: 20px; text-align: left; } 
+    h2 { color: #00923f; border-bottom: 2px solid #ffc20e; padding-bottom: 5px; margin-top: 0; } 
+    
+    .detail-item { 
+      margin-bottom: 15px; 
+      padding: 12px; 
+      background: #f0f7f3; 
+      border-radius: 8px; 
+      line-height: 1.6;
+      font-size: 1.0rem; 
+    } 
+    .label { font-weight: bold; color: #00923f; display: block; margin-bottom: 8px; font-size: 0.95em; } 
+
+    /* 野菜：1行1項目 */
+    .veggie-list div { 
+      margin-bottom: 4px; 
+      white-space: nowrap; 
+    } 
+    
+    /* ソース：1行に最大2つ並べる設定 */
+    .sauce-list { 
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 8px 10px; 
+    }
+    .sauce-list div { 
+      white-space: nowrap; 
+      font-size: 0.95rem; 
+      overflow: hidden; 
+    }
+
+    .btn { display: block; width: 80%; margin: 20px auto; padding: 15px; background: #00923f; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.3s; border: 2px solid #00923f; text-align: center; } 
+    .btn:hover { background: #ffc20e; color: #00923f; border-color: #ffc20e; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Subway Custom Gacha</div>
+    
+    <img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ item }}" class="result-image">
+    
+    <div class="content">
+      <h2>{{ item }}</h2>
+      
+      <div class="detail-item">
+        <span class="label">🥪 パンと焼き加減</span>
+        {{ bread }}（{{ toast }}）
+      </div>
+
+      <div class="detail-item">
+        <span class="label">🥗 野菜のカスタマイズ</span>
+        <div class="veggie-list">
+          {% for veg, amt in veggies.items() %}
+            <div>・{{ veg }}：<strong>{{ amt }}</strong></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">🧀 有料トッピング</span>
+        {{ toppings|join('、 ') }}
+      </div>
+
+      <div class="detail-item">
+        <span class="label">🍯 ソース</span>
+        <div class="sauce-list">
+          {% for s in sauces %}
+            <div>・{{ s }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <a href="/" class="btn">もう一度ガチャを回す</a>
+  </div>
+</body>
+</html>
