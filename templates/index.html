@@ -6,15 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サブウェイ カスタムガチャ</title>
   
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5PPF6MGL');</script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5PPF6MGL');</script>
   <style>
     /* デザインは元のものを継承 */
     body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f9f9f9; text-align: center; color: #333; margin: 0; padding: 20px; }
@@ -32,6 +24,7 @@
 </head>
 
 <body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PPF6MGL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="header">サブウェイ カスタムガチャ</div> 
     {% if error %}
@@ -47,7 +40,7 @@
           <div class="checkbox-group">
             {% for item in ["卵","乳","大豆","えび","豚肉","鶏肉","牛肉","魚","ゼラチン","りんご","ごま","アルコール"] %}
             <label>
-              <input type="checkbox" name="exclude" value="{{ item }}" onclick="gtag('event', 'exclude_select', {'ingredient': '{{ item }}'});">
+              <input type="checkbox" name="exclude" value="{{ item }}" onclick="dataLayer.push({'event': 'exclude_select', 'ingredient': '{{ item }}'});">
               {{ item }}
             </label>
             {% endfor %}
@@ -59,14 +52,14 @@
           <div class="checkbox-group">
             {% for item in ["レタス","トマト","ピーマン","オニオン","オリーブ","ピクルス","ホットペッパー","マヨ"] %}
             <label>
-              <input type="checkbox" name="exclude" value="{{ item }}" onclick="gtag('event', 'exclude_select', {'ingredient': '{{ item }}'});">
+              <input type="checkbox" name="exclude" value="{{ item }}" onclick="dataLayer.push({'event': 'exclude_select', 'ingredient': '{{ item }}'});">
               {{ item }}
             </label>
             {% endfor %}
           </div>
         </div>
 
-        <button type="submit" class="btn" onclick="gtag('event', 'gacha_click', {'event_category': 'action'});">
+        <button type="submit" class="btn" onclick="dataLayer.push({'event': 'gacha_click'});">
           ガチャを回す
         </button>
       </form>
@@ -75,4 +68,3 @@
 </body>
 
 </html>
-
