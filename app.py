@@ -37,7 +37,7 @@ sandwich_ingredients = {
 }
 
 bread_ingredients = {
-    "ホワイト":["大豆"],"ウィート":["大豆"],"セサミ":["大豆","ごま"],"ハニーオーツ":["大豆","アルコール"]
+    "セサミ":["ごま"],"ハニーオーツ":["アルコール"]
 }
 
 veggie_ingredients = {
@@ -127,4 +127,5 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
 
     app.run(host='0.0.0.0', port=port)
+
 
