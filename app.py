@@ -123,9 +123,12 @@ def gacha():
                            toppings=topping_choice, 
                            sauces=sauce_choice)
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+import os
+
+if __name__ == "__main__":
+    # Renderが用意したポート番号を読み取り、なければ10000を使う
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
 
 
 
